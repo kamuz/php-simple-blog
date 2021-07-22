@@ -4,7 +4,7 @@ require_once 'config/db.php';
 require_once 'config/config.php';
 
 // Create Query.
-$query = 'SELECT * FROM posts';
+$query = 'SELECT * FROM posts ORDER BY created_at DESC';
 
 // Get Result.
 $result = mysqli_query( $conn, $query );
@@ -26,7 +26,9 @@ mysqli_close( $conn );
 	<div class="row">
 		<div class="col-xl-12">
 			<h1 class="bd-title mt-0">Blog posts</h1>
-			<p class="bd-lead">Quickly get a project started with any of our examples ranging from using parts of the framework to custom components and layouts.</p>
+			<a class="btn btn-primary mb-3 float-end" href="<?php echo ROOT_URL; ?>addpost.php"><i class="bi bi-pencil-square"></i> Add New Post</a>
+			<p class="bd-lead">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit, featuring Sass variables and mixins, responsive grid system, extensive prebuilt components, and powerful JavaScript plugins.</p>
+			<div style="clear: both;"></div>
 			<?php foreach ( $posts as $post ) : ?>
 				<div class="card mb-3">
 					<div class="card-body">
